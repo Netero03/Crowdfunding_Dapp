@@ -216,9 +216,10 @@ contract CrowdFunding is Ownable {
     /// @return true, if payout process get completely done
     function payOutToCampaignTeam(uint256 _id) external privilageEntity(_id) notInEmergency returns (bool) {
         // this line will avoid re-entrancy attack
-        if(campaigns[_id].payedOut == true) revert("Funds withdrawed before");
+        
         if(msg.sender != address(owner())) {
-            if(campaigns[_id].deadline > block.timestamp) {
+            uint256 twoDaysAfterDeadline = campaigns[_id].deadline + (2 days);
+            if(campaigns[_id].deadline > block.timestamp && block.timestamp > twoDaysAfterDeadline) {
                 revert DeadLine(
                     {
                         campaingDeadline:campaigns[_id].deadline,
@@ -229,8 +230,8 @@ contract CrowdFunding is Ownable {
         }
 
         campaigns[_id].payedOut = true;
-        (uint256 raisedAmount, uint256 taxAmount) = _calculateTax(_id);
-        _payTo(campaigns[_id].owner, (raisedAmount - taxAmount));
+        (uint256 raised, uint256 taxAmount) = _calculateTax(_id);
+        _payTo(campaigns[_id].owner, (raised - taxAmount));
         _payPlatformFee(taxAmount);
         emit Action (
             _id,
