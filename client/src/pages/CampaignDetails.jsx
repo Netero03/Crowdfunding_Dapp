@@ -13,7 +13,7 @@ import { UpdateCampaign } from '../pages'
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, payOutToCampaignTeam, deleteCampaign, udpateCampaign, getDonations, contract, address } = useStateContext();
+  const { donate, payOutToCampaignTeam, deleteCampaign, updateCampaign, getDonations, contract, address } = useStateContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState('');
@@ -104,7 +104,7 @@ const CampaignDetails = () => {
               </div>
               <div>
                 <h4 className="font-epilogue font-semibold text-[14px] text-white break-all">{state.owner}</h4>
-                <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">10 Campaigns</p>
+                <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">2 Campaigns</p>
               </div>
             </div>
           </div>
@@ -155,6 +155,7 @@ const CampaignDetails = () => {
                 <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[#808191]">Support the project for no reward, just because it speaks to you.</p>
               </div>
                 <CustomButton 
+<<<<<<< HEAD
                 btnType="button"
                 title={remainingDays >= 0 && compareAmounts() ? "Fund Campaign" : 
                 (state.owner == address && (remainingDays == 0 || !compareAmounts())) ? "Fund Campaign" : "Finished"}
@@ -166,12 +167,34 @@ const CampaignDetails = () => {
                   }  
                 }}
                 /> <br/><br/>
+=======
+                  btnType="button"
+                  title={remainingDays >= 0 && compareAmounts() ? "Fund Campaign" : "Finished"}
+                  styles="w-full bg-[#8c6dfd]"
+                  handleClick={() => {
+                    if(remainingDays >= 0 && compareAmounts()) handleDonate();
+                  }}
+                />
+                <br/><br/>
+                {/* Withdraw Funds Button (for campaign owner) */}
+                {state.owner === address && (
+                  <CustomButton 
+                    btnType="button"
+                    title={"Withdraw Funds"}
+                    styles="w-full bg-[#8c6dfd]"
+                    
+                    handleClick={() => {
+                      if((remainingDays >= 0 || remainingDays <= 0 || !compareAmounts())) handleWithdraw();
+                    }}
+                  />
+                )} <br/><br/>
+>>>>>>> 6b97cb2473900c57cee2951639deaa8989065f4f
                 {state.owner == address ? 
                 ( 
                   <CustomButton 
                   btnType="button"
                   title={remainingDays >= 0 && compareAmounts() ?  
-                  "Edit" : "" }
+                  "Edit" : "Edit" }
                   styles="w-full bg-[#8c6dfd]"
                   handleClick={() => {
                     if(state.owner == address) handleUpdate()
@@ -184,7 +207,7 @@ const CampaignDetails = () => {
                     <CustomButton 
                     btnType="button"
                     title={remainingDays >= 0 && compareAmounts() ?  
-                    "Delete" : "" }
+                    "Delete" : "Delete" }
                     styles="w-full bg-[#8c6dfd]"
                     handleClick={() => {
                       if(state.owner == address) handleDelete(state.pId)
