@@ -157,7 +157,7 @@ const CampaignDetails = () => {
                 <CustomButton 
                 btnType="button"
                 title={remainingDays >= 0 && compareAmounts() ? "Fund Campaign" : 
-                (state.owner == address && (remainingDays == 0 || !compareAmounts())) ? "Withdraw Funds" : "Finished"}
+                (state.owner == address && (remainingDays == 0 || !compareAmounts())) ? "Fund Campaign" : "Finished"}
                 styles="w-full bg-[#8c6dfd]"
                 handleClick={() => {
                   if(remainingDays >= 0 && compareAmounts()) handleDonate()

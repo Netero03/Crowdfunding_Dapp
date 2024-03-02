@@ -9,23 +9,35 @@
     "deploy": "yarn build && npx thirdweb@latest upload dist"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.9",
+    "@supabase/supabase-js": "^2.39.7",
     "@thirdweb-dev/react": "^4",
     "@thirdweb-dev/sdk": "^4",
     "ethers": "^5",
+    "feather-icons": "^4.29.1",
+    "framer-motion": "^11.0.6",
     "path": "^0.12.7",
     "postcss-cli": "^11.0.0",
     "react": "^18.2",
     "react-dom": "^18.2",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.22.1",
     "react-scripts": "^5.0.1",
+    "react-slick": "^0.30.2",
     "react-toastify": "^10.0.4",
-    "read-more-react": "^1.0.10"
+    "read-more-react": "^1.0.10",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.8",
+    "tw-elements-react": "^1.0.0-alpha2",
+    "twin.macro": "^3.0.0-rc.5"
   },
   "devDependencies": {
+    "@types/react": "^18.2.60",
     "@vitejs/plugin-react": "^2",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "typescript": "^4.9.5",
     "vite": "^3",
     "vite-plugin-node-polyfills": "^0.7.0"
   }
