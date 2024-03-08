@@ -155,6 +155,19 @@ const CampaignDetails = () => {
                 <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[#808191]">Support the project for no reward, just because it speaks to you.</p>
               </div>
                 <CustomButton 
+<<<<<<< HEAD
+                btnType="button"
+                title={remainingDays >= 0 && compareAmounts() ? "Fund Campaign" : 
+                (state.owner == address && (remainingDays == 0 || !compareAmounts())) ? "Fund Campaign" : "Finished"}
+                styles="w-full bg-[#8c6dfd]"
+                handleClick={() => {
+                  if(remainingDays >= 0 && compareAmounts()) handleDonate()
+                  if(state.owner == address) {
+                    if((remainingDays == 0 || !compareAmounts())) handleWithdraw()
+                  }  
+                }}
+                /> <br/><br/>
+=======
                   btnType="button"
                   title={remainingDays >= 0 && compareAmounts() ? "Fund Campaign" : "Finished"}
                   styles="w-full bg-[#8c6dfd]"
@@ -175,6 +188,7 @@ const CampaignDetails = () => {
                     }}
                   />
                 )} <br/><br/>
+>>>>>>> 6b97cb2473900c57cee2951639deaa8989065f4f
                 {state.owner == address ? 
                 ( 
                   <CustomButton 
