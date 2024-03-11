@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { DisplayCampaigns } from '../components';
 import { useStateContext } from '../context'
+import Layout from '../components/Layout';
 
 const Profile = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,15 +18,18 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    if(contract) fetchCampaigns();
+    if (contract) fetchCampaigns();
   }, [address, contract]);
 
   return (
-    <DisplayCampaigns 
-      title="All Campaigns"
-      isLoading={isLoading}
-      campaigns={campaigns}
-    />
+    <Layout>
+
+      <DisplayCampaigns
+        title="All Campaigns"
+        isLoading={isLoading}
+        campaigns={campaigns}
+      />
+    </Layout>
   )
 }
 
