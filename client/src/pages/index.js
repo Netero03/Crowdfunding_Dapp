@@ -4,5 +4,5 @@ export { default as CreateCampaign } from './CreateCampaign';
 export { default as CampaignDetails } from './CampaignDetails';
 export { default as UpdateCampaign } from './UpdateCampaign';
 export { default as LandingPage } from './LandingPage'
-export {default as Login} from './Login'
-export {default as SignUp} from './SignUp'
+export { default as Login} from './Login'
+export { default as SignUp} from './SignUp'

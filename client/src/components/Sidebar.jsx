@@ -28,9 +28,9 @@ const Sidebar = () => {
     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
         <div className="fixed flex flex-col top-0 left-0 w-21 bg-white h-full border-r">
             <div className="flex items-center justify-center h-14 border-b mt-10">
-                <Link to="/">
+                <Link to="/home">
                     <Icon styles={"w-24 md:w-auto"} imgUrl={Crowdfund} />
-                </Link>
+                </Link> 
             </div>
     <div className="overflow-y-auto overflow-x-hidden flex-grow mt-10">
       <ul className="flex flex-col py-4 space-y-1">

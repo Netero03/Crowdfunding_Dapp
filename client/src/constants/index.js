@@ -4,7 +4,7 @@ export const navlinks = [
   {
     name: 'Home',
     imgUrl: dashboard,
-    link: '/',
+    link: '/home',
     id: 0
   },
   {
