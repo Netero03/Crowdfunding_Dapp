@@ -9,3 +9,5 @@ export { default as Loader } from './Loader';
 export { default as Header} from './Header';
 export { default as ExpiredNotice} from './ExpiredNotice'
 export { default as CountdownTimer} from './CountdownTimer'
+export {default as OrgRegistration} from './Registration/OrgRegistratioin'
+export {default as UserRegistration} from './Registration/UserRegistration'
