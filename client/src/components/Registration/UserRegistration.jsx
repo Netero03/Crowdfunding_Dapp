@@ -94,8 +94,8 @@ const UserRegistration = () => {
     e.preventDefault();
     try{
     let { data, error } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password
+      email: loginformData.email,
+      password: loginformData.password
     });
         if (error) {
           console.log(error)
@@ -228,7 +228,7 @@ const UserRegistration = () => {
                   >
                     <div className="logo">
                       <img src={logo} alt="easyclass" />
-                      <Typography variant="h6">BetterWorld</Typography>
+                      <Typography variant="h6">Chain Rise</Typography>
                     </div>
 
                     <div className="heading">

@@ -133,7 +133,7 @@ const OrgRegistration = () => {
                   >
                     <div className="logo">
                       <img src={logo} />
-                      <Typography variant="h6">BetterWorld</Typography>
+                      <Typography variant="h6">Chain Rise</Typography>
                     </div>
 
                     <div className="heading">
