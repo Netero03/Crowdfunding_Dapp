@@ -40,7 +40,6 @@ import { supabase } from "../lib/helper/SupabaseClient";
             throw error;
         }
         console.log('User signed up successfully:', data);
-        navigate("/home")
     } catch (error) {
         console.error('Error signing up user:', error.message);
     }
@@ -64,7 +63,7 @@ import { supabase } from "../lib/helper/SupabaseClient";
             <Input
               type="text"
               size="lg"
-              placeholder="name@mail.com"
+              placeholder="John Doe"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               value={Name}
               onChange={()=>{setName(this.value);}}

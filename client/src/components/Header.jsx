@@ -9,7 +9,7 @@ const Header = () => {
 
   const Login = async() => {
 
-    navigate('/login')
+    navigate('/registrationpage')
   }
 
 
