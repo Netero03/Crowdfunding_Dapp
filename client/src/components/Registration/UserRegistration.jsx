@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./BothRegistration.css";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+
 import {
   Alert,
   Box,
