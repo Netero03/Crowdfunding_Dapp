@@ -15,6 +15,7 @@ import money from './money.svg';
 import loader from './loader.svg';
 import thirdweb from './thirdweb.png';
 import profileIcon from './profile-circle-svgrepo-com.svg';
+import ChainRiseLogo from './ChainRiseLogo.png'
 
 export {
   tagType,
@@ -33,5 +34,6 @@ export {
   money,
   loader,
   thirdweb,
-  profileIcon
+  profileIcon,
+  ChainRiseLogo
 };
