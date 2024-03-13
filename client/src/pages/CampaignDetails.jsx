@@ -38,7 +38,7 @@ const CampaignDetails = () => {
 
     await donate(state.pId, amount);
 
-    navigate('/')
+    navigate('/home')
     setIsLoading(false);
   }
 
@@ -47,7 +47,7 @@ const CampaignDetails = () => {
 
     await payOutToCampaignTeam(state.pId);
 
-    navigate('/')
+    navigate('/home')
     setIsLoading(false);
   }
 
@@ -62,7 +62,7 @@ const CampaignDetails = () => {
 
     await deleteCampaign(state.pId);
 
-    navigate('/')
+    navigate('/home')
     setIsLoading(false);
   }
 

@@ -74,7 +74,7 @@ const OrgRegistration = () => {
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://crowdfunding-dapp-drab.vercel.app/signup", {
+      .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
         ...formData,
         userType: "ORG",
       })
@@ -93,7 +93,7 @@ const OrgRegistration = () => {
   const handleSignInSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://crowdfunding-dapp-drab.vercel.app/login", {
+      .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
         ...loginformData,
         userType: "ORG",
       })
@@ -128,7 +128,7 @@ const OrgRegistration = () => {
                   <form
                     action="index.html"
                     autoComplete="off"
-                    className="sign-up-form pranav-mc-bsdk-form"
+                    className="sign-up-form fillup-form"
                     onSubmit={handleSignInSubmit}
                   >
                     <div className="logo">
@@ -235,7 +235,7 @@ const OrgRegistration = () => {
                   <form
                     action="index.html"
                     autoComplete="off"
-                    className="sign-in-form pranav-mc-bsdk-form"
+                    className="sign-in-form fillup-form"
                     onSubmit={handleSignupSubmit}
                   >
                     <div className="logo">
