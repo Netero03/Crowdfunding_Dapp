@@ -17,14 +17,14 @@ export const navlinks = [
     name: 'Edit campaign',
     imgUrl: payment,
     link: '/profile',
-    disabled: true,
+    disabled: false,
     id: 2
   },
   {
     name: 'Withdraw',
     imgUrl: withdraw,
-    link: '/pofile',
-    disabled: true,
+    link: '/profile',
+    disabled: false,
     id: 3
   },
   {
@@ -37,6 +37,7 @@ export const navlinks = [
     name: 'Logout',
     imgUrl: logout,
     link: '/',
+    disabled: false,
     id: 5
   },
 ];

@@ -74,7 +74,7 @@ const OrgRegistration = () => {
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:5000/signup", {
+      .post("https://crowdfunding-dapp-drab.vercel.app/signup", {
         ...formData,
         userType: "ORG",
       })
@@ -93,7 +93,7 @@ const OrgRegistration = () => {
   const handleSignInSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:5000/login", {
+      .post("https://crowdfunding-dapp-drab.vercel.app/login", {
         ...loginformData,
         userType: "ORG",
       })
@@ -240,7 +240,7 @@ const OrgRegistration = () => {
                   >
                     <div className="logo">
                       <img src={logo} alt="easyclass" />
-                      <Typography variant="h6">BetterWorld</Typography>
+                      <Typography variant="h6">ChainRise</Typography>
                     </div>
 
                     <div className="heading">
