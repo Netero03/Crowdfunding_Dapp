@@ -16,11 +16,16 @@ input {
 main {
   width: 100%;
   overflow: hidden;
-  background: linear-gradient(90deg, rgba(0,56,234,1) 0%, rgba(0,152,234,1) 51%, rgba(0,212,255,1) 100%);
+
   padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
+
+.transition-bg-color {
+  transition: background-color 0.5s ease;
 }
 
 .box {
@@ -30,7 +35,7 @@ main {
   height: 640px;
   background-color: #fff;
   border-radius: 3.3rem;
-  box-shadow: 10px 50px 20px 10px rgb(0 0 0 / 32%);
+  box-shadow: 5px 10px 10px 5px rgb(0 0 0 / 32%);
 }
 
 .inner-box {
@@ -54,7 +59,7 @@ main {
   transition: 0.8s ease-in-out;
 }
 
-.pranav-mc-bsdk-form {
+.fillup-form {
   max-width: 260px;
   width: 100%;
   margin: 0 auto;
@@ -115,7 +120,7 @@ form.sign-up-form {
 }
 
 .toggle2:hover {
-  color: #0098ea;
+  color: #265073;
 }
 
 .input-wrap {
@@ -127,7 +132,7 @@ form.sign-up-form {
   position: relative;
   height: 20px;
   margin-bottom: 2rem;
-  color: #0098ea;
+  color: #265073;
 }
 .input-field {
   position: absolute;
@@ -165,7 +170,7 @@ form.sign-up-form {
 }
 
 .sign-btn:hover{
-  background-color: #0098ea;
+  background-color: #265073;
   color: #000000;
 }
 
@@ -208,7 +213,7 @@ main.sign-up-mode .carousell {
   width: 55%;
   left: 45%;
   top: 0;
-  background-color: #c1e9ff;
+  background-color: #d9fff5;
   border-radius: 2rem;
   display: flex;
   flex-direction: column;

@@ -88,7 +88,7 @@ const CampaignDetails = () => {
                 <div className="absolute h-full bg-[#4acd8d]" style={{ width: `${calculateBarPercentage(state.target, state.amountCollected)}%`, maxWidth: '100%' }}>
                 </div>
               </div>
-            </div>
+            </div>  
 
             <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
               <CountdownTimer title="Left" targetDate={state.deadline} />
@@ -101,46 +101,46 @@ const CampaignDetails = () => {
           <div className="mt-[60px] flex lg:flex-row flex-col gap-5">
             <div className="flex-[2] flex flex-col gap-[40px]">
               <div>
-                <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Creator</h4>
+                <h4 className="font-epilogue font-semibold text-[18px] text-[#265073] uppercase">Creator</h4>
 
                 <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
                   <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-[#2D9596] cursor-pointer">
                     <img src={thirdweb} alt="user" className="w-[60%] h-[60%] object-contain" />
                   </div>
                   <div>
-                    <h4 className="font-epilogue font-semibold text-[14px] text-white break-all">{state.owner}</h4>
-                    <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">2 Campaigns</p>
+                    <h4 className="font-epilogue font-semibold text-[14px] text-[#265073] break-all">{state.owner}</h4>
+                    <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#2D9596]">2 Campaigns</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Story</h4>
+                <h4 className="font-epilogue font-semibold text-[18px] text-[#265073] uppercase">Story</h4>
 
                 <div className="mt-[20px]">
-                  <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] text-justify">{state.description}</p>
+                  <p className="font-epilogue font-normal text-[16px] text-[#2D9596] leading-[26px] text-justify">{state.description}</p>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Donators</h4>
+                <h4 className="font-epilogue font-semibold text-[18px] text-[#265073] uppercase">Donators</h4>
 
                 <div className="mt-[20px] flex flex-col gap-4">
                   {donators.length > 0 ? donators.map((item, index) => (
                     <div key={`${item.donator}-${index}`} className="flex justify-between items-center gap-4">
                       <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd] leading-[26px] break-ll">{index + 1}. {item.donator}</p>
-                      <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">{item.donation}</p>
+                      <p className="font-epilogue font-normal text-[16px] text-[#2D9596] leading-[26px] break-ll">{item.donation}</p>
                     </div>
                   )) : (
-                    <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] text-justify">No donators yet. Be the first one!</p>
+                    <p className="font-epilogue font-normal text-[16px] text-[#2D9596] leading-[26px] text-justify">No donators yet. Be the first one!</p>
                   )}
                 </div>
               </div>
             </div>
 
             <div className="flex-1">
-              <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Fund</h4>
-              <div className="mt-[20px] flex flex-col p-4 bg-[#2D9596] rounded-[10px]">
+              <h4 className="font-epilogue font-semibold text-[18px] text-[#265073] uppercase">Fund</h4>
+                <div className="mt-[20px] flex flex-col p-4 bg-[#2D9596] rounded-[10px]">
                 <p className="font-epilogue fount-medium text-[20px] leading-[30px] text-center text-[white]">
                   Fund the campaign
                 </p>
@@ -156,8 +156,8 @@ const CampaignDetails = () => {
                     />) : (<h1></h1>)}
 
                   <div className="my-[20px] p-4 bg-[#9AD0C2] rounded-[10px]">
-                    <h4 className="font-epilogue font-semibold text-[14px] leading-[22px] text-white">Back it because you believe in it.</h4>
-                    <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[#808191]">Support the project for no reward, just because it speaks to you.</p>
+                    <h4 className="font-epilogue font-semibold text-[14px] leading-[22px] text-[#265073]">Back it because you believe in it.</h4>
+                    <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[white]">Support the project for no reward, just because it speaks to you.</p>
                   </div>
                   <CustomButton
                     btnType="button"

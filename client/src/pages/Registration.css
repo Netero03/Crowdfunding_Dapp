@@ -1,6 +1,5 @@
 .main-reg {
-    background: linear-gradient(90deg, rgba(0,56,234,1) 0%, rgba(0,152,234,1) 51%, rgba(0,212,255,1) 100%);
-    height: 100vh;
+    
   }
   
   .decide {
@@ -19,13 +18,14 @@
     /* border: 1px solid rgb(45, 189, 23); */
     border-radius: 10px;
     padding: 1px 3px;
+    color:black;
   }
   .decide-btns {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    border-bottom: 1px solid #0098ea;
+    border-bottom: 1px solid #265073;
     padding: 5px;
     color: #050505;
     background-color: white;
@@ -44,7 +44,7 @@
   .user-btn:hover {
     color: #003a5a;
     border-radius: 2px;
-    border-bottom: 1px solid #0098ea;
+    border-bottom: 1px solid #265073;
   }
   .org-btn {
     width: 53%;
@@ -54,5 +54,5 @@
   .org-btn:hover {
     color: #003a5a;
     border-radius: 2px;
-    border-bottom: 1px solid #0098ea;
+    border-bottom: 1px solid #265073;
   }

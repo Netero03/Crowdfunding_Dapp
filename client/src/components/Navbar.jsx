@@ -40,12 +40,14 @@ const Navbar = () => {
       
           <ConnectWallet 
             modalSize="compact"
-            theme={btnTheme}>
+            theme={btnTheme}
+            className='transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/30'
+            >
           </ConnectWallet>
           <CustomButton 
             btnType="button"
             title="Create a campaign"
-            styles="bg-[#265073] transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/80"
+            styles="bg-[#265073] "
             handleClick={() => navigate('/create-campaign')}
           />
 

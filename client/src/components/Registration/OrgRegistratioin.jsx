@@ -132,18 +132,17 @@ const OrgRegistration = () => {
                     onSubmit={handleSignInSubmit}
                   >
                     <div className="logo">
-                      <img src={logo} />
-                      <Typography variant="h6">Chain Rise</Typography>
+
+                      <a className="font-bold text-2xl text-[#265073]">ChainRise</a>
                     </div>
 
                     <div className="heading">
-                      <Typography
-                        // color={theme.palette.primary.main}
-                        variant="h4"
-                        fontSize={"30px"}
+                      <a
+                        variant="h4" className="font-bold text-3xl"
                       >
                         Welcome, Establishment
-                      </Typography>
+                      </a>
+                      <br></br>
                       <Typography mb={5} fontSize={"small"} variant="body4">
                         Not registered yet?{" "}
                         <a
@@ -213,7 +212,7 @@ const OrgRegistration = () => {
                               type="submit"
                               className="sign-btn"
                               sx={{
-                                backgroundColor: "#0098ea",
+                                backgroundColor: "#265073",
                                 color: "white",
                                 marginBottom: "10px",
                               }}
@@ -367,7 +366,7 @@ const OrgRegistration = () => {
                               value="Sign Up"
                               className="sign-btn"
                               sx={{
-                                background: "#0098ea",
+                                background: "#265073",
                                 color: "white",
                                 marginBottom: "10px",
                               }}
