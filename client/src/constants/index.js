@@ -41,3 +41,18 @@ export const navlinks = [
     id: 5
   },
 ];
+
+export const adminNavlinks=[
+  {
+    name: 'All campaigns',
+    imgUrl: dashboard,
+    link: '/admindashboard',
+    id: 0
+  },
+  {
+    name: 'Users',
+    imgUrl: profile,
+    link: '/adminapproval',
+    id: 1
+  }
+];

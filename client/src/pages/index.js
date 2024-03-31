@@ -5,3 +5,5 @@ export { default as CampaignDetails } from './CampaignDetails';
 export { default as UpdateCampaign } from './UpdateCampaign';
 export { default as LandingPage } from './LandingPage'
 export { default as Registration} from './Registration'
+export { default as AdminDashboard} from './AdminPortal'
+export { default as AdminApproval} from './AdminApproval'
