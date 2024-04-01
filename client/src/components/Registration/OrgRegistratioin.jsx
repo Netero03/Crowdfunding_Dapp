@@ -71,23 +71,26 @@ const OrgRegistration = () => {
     }));
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async(e) => {
     e.preventDefault();
-    axios
-      .post("http://127.0.0.1:5000/signup", {
-        ...formData,
-        userType: "ORG",
-      })
-      .then((res) => {
-        if (res.data.signup) {
-          setShowSuccessSnack(true);
-          setSnackMsg("Signup successful");
-          setTimeout(() => {
-            document.querySelector(".toggle2").click();
-          }, 2000);
-        } else console.log(res.data.error);
-      })
-      .catch((err) => console.log(err));
+
+    try {
+      let { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password
+      });
+
+      if (error) {
+        console.log(error.message);
+      } else {
+        setShowSuccessSnack(true);
+        setSnackMsg("Wait for admin Approval");
+        
+        console.log(data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSignInSubmit = (e) => {

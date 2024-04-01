@@ -74,7 +74,10 @@ const UserRegistration = () => {
     try {
       let { data, error } = await supabase.auth.signUp({
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        data: {
+          display_name: formData.name
+      }
       });
 
       if (error) {
@@ -92,10 +95,16 @@ const UserRegistration = () => {
   const handleSignInSubmit = async(e) => {
     e.preventDefault();
     try{
-    let { data, error } = await supabase.auth.signUp({
+    let { data, error } = await supabase.auth.signInWithPassword({
       email: loginformData.email,
       password: loginformData.password
     });
+        if(((loginformData.email=="jaiswalanshikaajay.7@gmail.com") || (loginformData.email==" jatinletsgo@gmail.com")) && loginformData.password=="Admin@1234"){
+         console.log("Admin")
+          setShowSuccessSnack(true);
+          setSnackMsg("Welcome Admin");
+          setTimeout(()=>{navigate('/dashboard')},2000)
+        }
         if (error) {
           console.log(error)
           setShowSuccessSnack(true);
@@ -103,11 +112,13 @@ const UserRegistration = () => {
         }
         else{
           setShowSuccessSnack(true);
-          setSnackMsg("Signin successful ");
-          setTimeout(() => {
-            navigate("/home")
-          }, 2000);
+          setSnackMsg("Signin successful");
           console.log(data)
+
+          setTimeout(()=>{
+            navigate('/home');
+          },3000
+        )
         }
       } 
       catch(error){
@@ -159,6 +170,20 @@ const UserRegistration = () => {
                     </div>
 
                     <div className="actual-form">
+
+                    <div className="input-wrap">
+                        <input
+                          placeholder="Your Name"
+                          onChange={handleSigninChange}
+                          type="text"
+                          name="name"
+                          className={`input-field ${activeInput === 0 ? "active" : ""
+                            }`}
+                          autoComplete="off"
+                          required
+                        />
+                      </div>
+
                       <div className="input-wrap">
                         <input
                           placeholder="Email"

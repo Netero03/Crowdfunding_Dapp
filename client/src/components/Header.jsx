@@ -29,7 +29,6 @@ const Header = () => {
            handleClick = {Login} 
            styles= "bg-[#8c6dfd] w-40 h-12"
            />
-          <button className=' border w-40 h-12 ml-2 rounded-md'  >SignUp</button>
         </div>
         </div>
         
