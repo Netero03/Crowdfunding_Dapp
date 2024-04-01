@@ -14,17 +14,17 @@ const Navbar = () => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const { connect, address } = useStateContext();
 
-  const currentUser = supabase.auth.user();
+  // const currentUser = supabase.auth.user();
 
-  if (currentUser) {
-    // Fetch the display name from user metadata
-    const Name = currentUser.user_metadata.display_name;
+  // if (currentUser) {
+  //   // Fetch the display name from user metadata
+  //   const Name = currentUser.user_metadata.display_name;
 
-    // Use the display name as needed
-    console.log('User display name:', Name);
-  } else {
-    console.error('No user logged in.');
-  }
+  //   // Use the display name as needed
+  //   console.log('User display name:', Name);
+  // } else {
+  //   console.error('No user logged in.');
+  // }
 
   const btnTheme = lightTheme({
     fontFamily: "Inter, sans-serif",
@@ -67,7 +67,7 @@ const Navbar = () => {
         <Link to="/profile">
           <div className="w-[52px] h-[52px] rounded-full bg-[#9AD0C2] flex justify-center items-center cursor-pointer transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/80" >
             <img src={profile} alt="user" className="w-[60%] h-[60%] object-contain" />
-            <h4>{Name}</h4>
+            {/* <h4>{Name}</h4> */}
           </div>
         </Link>
       </div>

@@ -52,7 +52,13 @@ export const adminNavlinks=[
   {
     name: 'Users',
     imgUrl: profile,
-    link: '/adminapproval',
+    link: '/users',
     id: 1
+  },
+  {
+    name: 'Organisations',
+    imgUrl: profile,
+    link: '/organisations',
+    id: 2
   }
 ];

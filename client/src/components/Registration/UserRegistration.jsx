@@ -75,9 +75,6 @@ const UserRegistration = () => {
       let { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
-        data: {
-          display_name: formData.name
-      }
       });
 
       if (error) {
@@ -85,8 +82,19 @@ const UserRegistration = () => {
       } else {
         setShowSuccessSnack(true);
         setSnackMsg("Signup successful! Check Your Email");
-        console.log(data)
+       
+
+        // save user data in Users table
+        const { data, error } = await supabase
+          .from('Users')
+          .insert([
+            { email: formData.email , Full_name: formData.name },
+          ])
+          .select()
+
+          if(error){ console.log(error) }
       }
+
     } catch (error) {
       console.log(error);
     }
@@ -94,39 +102,40 @@ const UserRegistration = () => {
 
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
-    try{
-    let { data, error } = await supabase.auth.signInWithPassword({
-      email: loginformData.email,
-      password: loginformData.password
-    });
-        if(((loginformData.email=="jaiswalanshikaajay.7@gmail.com") || (loginformData.email==" jatinletsgo@gmail.com")) && loginformData.password=="Admin@1234"){
-         console.log("Admin")
+    try {
+      let { data, error } = await supabase.auth.signInWithPassword({
+        email: loginformData.email,
+        password: loginformData.password
+      });
+
+      if (error) {
+        console.log(error);
+        setShowSuccessSnack(true);
+        setSnackMsg("Signin Failed " + error.message); // Use error.message instead of just error
+      } else {
+        setShowSuccessSnack(true);
+        setSnackMsg("Signin successful");
+        console.log(data);
+
+        // Check if user is admin after successful authentication
+        if ((loginformData.email === "jaiswalanshikaajay.7@gmail.com" || loginformData.email === "jatinletsgo@gmail.com") && loginformData.password === "Anshika@1234") {
+          console.log("Admin");
           setShowSuccessSnack(true);
           setSnackMsg("Welcome Admin");
-          setTimeout(()=>{navigate('/dashboard')},2000)
-        }
-        if (error) {
-          console.log(error)
-          setShowSuccessSnack(true);
-        setSnackMsg("signup Failed " + error);
-        }
-        else{
-          setShowSuccessSnack(true);
-          setSnackMsg("Signin successful");
-          console.log(data)
-
-          setTimeout(()=>{
+          setTimeout(() => {
+            navigate('/admindashboard');
+          }, 2000);
+        } else {
+          setTimeout(() => {
             navigate('/home');
-          },3000
-        )
+          }, 3000);
         }
-      } 
-      catch(error){
-        console.log(error);
       }
-
-
+    } catch (error) {
+      console.log(error);
+    }
   };
+
 
   const handleBulletClick = (index) => {
     setActiveSlide(index);
@@ -137,7 +146,7 @@ const UserRegistration = () => {
     // Change background color after component is mounted
     setBackgroundColor('bg-gradient-to-b from-[#2D9596] to-[#a9cfc5]'); // Green color
   }, []);
-  
+
   return (
     <>
       <main className={`${!isSignUpMode ? "sign-up-mode" : ""} transition-bg-color`} style={{ backgroundColor }}>
@@ -178,7 +187,7 @@ const UserRegistration = () => {
 
                     <div className="actual-form">
 
-                    <div className="input-wrap">
+                      <div className="input-wrap">
                         <input
                           placeholder="Your Name"
                           onChange={handleSigninChange}
