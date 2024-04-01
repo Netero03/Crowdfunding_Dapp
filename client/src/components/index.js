@@ -11,3 +11,5 @@ export { default as ExpiredNotice} from './ExpiredNotice'
 export { default as CountdownTimer} from './CountdownTimer'
 export {default as OrgRegistration} from './Registration/OrgRegistratioin'
 export {default as UserRegistration} from './Registration/UserRegistration'
+export { default as AdminLayout} from './AdminLayout';
+export { default as AdminSidebar} from './AdminSidebar'

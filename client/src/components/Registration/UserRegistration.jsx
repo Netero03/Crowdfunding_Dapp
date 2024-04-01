@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BothRegistration.css";
 
 import {
@@ -92,7 +92,7 @@ const UserRegistration = () => {
     }
   };
 
-  const handleSignInSubmit = async(e) => {
+  const handleSignInSubmit = async (e) => {
     e.preventDefault();
     try{
     let { data, error } = await supabase.auth.signInWithPassword({
@@ -123,18 +123,45 @@ const UserRegistration = () => {
       } 
       catch(error){
         console.log(error);
+    try {
+      let { data, error } = await supabase.auth.signUp({
+        email: loginformData.email,
+        password: loginformData.password
+      });
+      if (error) {
+        console.log(error)
+        setShowSuccessSnack(true);
+        setSnackMsg("signup Failed " + error);
       }
-      
-      
+      else {
+        setShowSuccessSnack(true);
+        setSnackMsg("Signin successful ");
+        setTimeout(() => {
+          navigate("/home")
+        }, 2000);
+        console.log(data)
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+
+
   };
 
   const handleBulletClick = (index) => {
     setActiveSlide(index);
   };
 
+  const [backgroundColor, setBackgroundColor] = useState('bg-gradient-to-b from-[#9ad0c2] to-[#a9cfc5]');
+  useEffect(() => {
+    // Change background color after component is mounted
+    setBackgroundColor('bg-gradient-to-b from-[#2D9596] to-[#a9cfc5]'); // Green color
+  }, []);
+  
   return (
     <>
-      <main className={!isSignUpMode ? "sign-up-mode" : ""}>
+      <main className={`${!isSignUpMode ? "sign-up-mode" : ""} transition-bg-color`} style={{ backgroundColor }}>
         <div className="box">
           <div className="inner-box">
             <div className="forms-wrap">
@@ -144,19 +171,20 @@ const UserRegistration = () => {
                     onSubmit={handleSignInSubmit}
                     action="index.html"
                     autoComplete="off"
-                    className="sign-up-form pranav-mc-bsdk-form"
+                    className="sign-up-form fillup-form"
                   >
                     <div className="logo">
-                      <img src={logo} />
-                      <Typography variant="h6">ChainRise</Typography>
+
+                      <a className="font-bold text-2xl text-[#265073]">ChainRise</a>
                     </div>
 
                     <div className="heading">
-                      <Typography
-                        variant="h4"
+                      <a
+                        variant="h4" className="font-bold text-3xl"
                       >
                         Welcome User
-                      </Typography>
+                      </a>
+                      <br></br>
                       <Typography mb={5} fontSize={"small"} variant="body4">
                         Not registered yet?{" "}
                         <a
@@ -217,7 +245,7 @@ const UserRegistration = () => {
                               type="submit"
                               className="sign-btn"
                               sx={{
-                                backgroundColor: "#0098ea",
+                                backgroundColor: "#265073",
                                 color: "white",
                                 marginBottom: "10px",
                               }}
@@ -247,7 +275,7 @@ const UserRegistration = () => {
                   <form
                     action="index.html"
                     autoComplete="off"
-                    className="sign-in-form pranav-mc-bsdk-form"
+                    className="sign-in-form fillup-form"
                     onSubmit={handleSignupSubmit}
                   >
                     <div className="logo">
@@ -315,7 +343,7 @@ const UserRegistration = () => {
                               value="Sign Up"
                               className="sign-btn"
                               sx={{
-                                background: "#0098ea",
+                                background: "#265073",
                                 color: "white",
                                 marginBottom: "10px",
                               }}

@@ -13,8 +13,8 @@ const ExpiredNotice2 = () => {
 const ExpiredNotice = ({title}) => {
   return (
     <div className="flex flex-col items-center w-[150px]">
-      <h4 className="font-epilogue font-bold text-[20px] text-white p-3 bg-[#1c1c24] rounded-t-[10px] w-full text-center truncate">Expired</h4>
-      <p className="font-epilogue font-normal text-[16px] text-[#808191] bg-[#28282e] px-3 py-2 w-full rouned-b-[10px] text-center">{title}</p>
+      <h4 className="font-epilogue font-bold text-[20px] text-white p-3 bg-[#2D9596] rounded-t-[10px] w-full text-center truncate">Expired</h4>
+      <p className="font-epilogue font-normal text-[16px] text-[#265073] bg-[#9AD0C2] px-3 py-2 w-full rouned-b-[10px] text-center">{title}</p>
     </div>
   );
 };
@@ -30,7 +30,7 @@ const ShowCounter = ({ title, days, hours, minutes, seconds }) => {
               <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
               <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
         </h4>
-          <p className="font-epilogue font-normal text-[16px] text-[#808191] bg-[#9AD0C2] px-3 py-2 w-full rouned-b-[10px] text-center">{title}</p>
+          <p className="font-epilogue font-normal text-[16px] text-[#265073] bg-[#9AD0C2] px-3 py-2 w-full rouned-b-[10px] text-center">{title}</p>
         </div>
     )
 };

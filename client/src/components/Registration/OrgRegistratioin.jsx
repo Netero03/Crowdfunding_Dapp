@@ -73,30 +73,27 @@ const OrgRegistration = () => {
 
   const handleSignupSubmit = async(e) => {
     e.preventDefault();
-
-    try {
-      let { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password
-      });
-
-      if (error) {
-        console.log(error.message);
-      } else {
-        setShowSuccessSnack(true);
-        setSnackMsg("Wait for admin Approval");
-        
-        console.log(data)
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    axios
+      .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
+        ...formData,
+        userType: "ORG",
+      })
+      .then((res) => {
+        if (res.data.signup) {
+          setShowSuccessSnack(true);
+          setSnackMsg("Signup successful");
+          setTimeout(() => {
+            document.querySelector(".toggle2").click();
+          }, 2000);
+        } else console.log(res.data.error);
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleSignInSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:5000/login", {
+      .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
         ...loginformData,
         userType: "ORG",
       })
@@ -131,22 +128,21 @@ const OrgRegistration = () => {
                   <form
                     action="index.html"
                     autoComplete="off"
-                    className="sign-up-form pranav-mc-bsdk-form"
+                    className="sign-up-form fillup-form"
                     onSubmit={handleSignInSubmit}
                   >
                     <div className="logo">
-                      <img src={logo} />
-                      <Typography variant="h6">Chain Rise</Typography>
+
+                      <a className="font-bold text-2xl text-[#265073]">ChainRise</a>
                     </div>
 
                     <div className="heading">
-                      <Typography
-                        // color={theme.palette.primary.main}
-                        variant="h4"
-                        fontSize={"30px"}
+                      <a
+                        variant="h4" className="font-bold text-3xl"
                       >
                         Welcome, Establishment
-                      </Typography>
+                      </a>
+                      <br></br>
                       <Typography mb={5} fontSize={"small"} variant="body4">
                         Not registered yet?{" "}
                         <a
@@ -216,7 +212,7 @@ const OrgRegistration = () => {
                               type="submit"
                               className="sign-btn"
                               sx={{
-                                backgroundColor: "#0098ea",
+                                backgroundColor: "#265073",
                                 color: "white",
                                 marginBottom: "10px",
                               }}
@@ -238,12 +234,12 @@ const OrgRegistration = () => {
                   <form
                     action="index.html"
                     autoComplete="off"
-                    className="sign-in-form pranav-mc-bsdk-form"
+                    className="sign-in-form fillup-form"
                     onSubmit={handleSignupSubmit}
                   >
                     <div className="logo">
                       <img src={logo} alt="easyclass" />
-                      <Typography variant="h6">BetterWorld</Typography>
+                      <Typography variant="h6">ChainRise</Typography>
                     </div>
 
                     <div className="heading">
@@ -370,7 +366,7 @@ const OrgRegistration = () => {
                               value="Sign Up"
                               className="sign-btn"
                               sx={{
-                                background: "#0098ea",
+                                background: "#265073",
                                 color: "white",
                                 marginBottom: "10px",
                               }}

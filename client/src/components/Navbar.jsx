@@ -50,17 +50,19 @@ const Navbar = () => {
       </div>
 
       <div className="sm:flex hidden flex-row justify-end gap-4">
-
-        <ConnectWallet
-          modalSize="compact"
-          theme={btnTheme}>
-        </ConnectWallet>
-        <CustomButton
-          btnType="button"
-          title="Create a campaign"
-          styles="bg-[#265073] transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/80"
-          handleClick={() => navigate('/create-campaign')}
-        />
+      
+          <ConnectWallet 
+            modalSize="compact"
+            theme={btnTheme}
+            className='transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/30'
+            >
+          </ConnectWallet>
+          <CustomButton 
+            btnType="button"
+            title="Create a campaign"
+            styles="bg-[#265073] "
+            handleClick={() => navigate('/create-campaign')}
+          />
 
         <Link to="/profile">
           <div className="w-[52px] h-[52px] rounded-full bg-[#9AD0C2] flex justify-center items-center cursor-pointer transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/80" >
