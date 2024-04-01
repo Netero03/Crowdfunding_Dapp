@@ -123,28 +123,7 @@ const UserRegistration = () => {
       } 
       catch(error){
         console.log(error);
-    try {
-      let { data, error } = await supabase.auth.signUp({
-        email: loginformData.email,
-        password: loginformData.password
-      });
-      if (error) {
-        console.log(error)
-        setShowSuccessSnack(true);
-        setSnackMsg("signup Failed " + error);
       }
-      else {
-        setShowSuccessSnack(true);
-        setSnackMsg("Signin successful ");
-        setTimeout(() => {
-          navigate("/home")
-        }, 2000);
-        console.log(data)
-      }
-    }
-    catch (error) {
-      console.log(error);
-    }
 
 
   };
