@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Sidebar, Navbar } from '../components';
-import { DisplayCampaigns } from '../components';
+import { DisplayCampaignsforUsers } from '../components';
 import { useStateContext } from '../context'
 import UserLayout from '../components/UserLayout';
 
@@ -25,7 +25,7 @@ const UserHome = () => {
     <>
       <UserLayout>
 
-        <DisplayCampaigns
+        <DisplayCampaignsforUsers
           title="All Campaigns"
           isLoading={isLoading}
           campaigns={campaigns}

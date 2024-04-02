@@ -15,3 +15,4 @@ export { default as AdminLayout } from './AdminLayout';
 export { default as AdminSidebar } from './AdminSidebar'
 export { default as UserLayout } from './UserLayout'
 export { default as UserNavbar } from './UserNavbar'
+export { default as DisplayCampaignsforUsers } from './DisplayCampaignsforUsers'

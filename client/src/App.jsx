@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { CampaignDetails, CreateCampaign, UpdateCampaign, Home, Profile, LandingPage, Registration, AdminDashboard, Users , ApprovalForm, Organisations, UserHome, Blog, UserProfile, HelpCentre } from './pages';
+import { CampaignDetails, CreateCampaign, UpdateCampaign, Home, Profile, LandingPage, Registration, AdminDashboard, Users , ApprovalForm, Organisations, UserHome, Blog, UserProfile, HelpCentre, CampaignDetailsforUsers, RequestForm, BlogForAll, UserRequests } from './pages';
 
 const App = () => {
   return (
@@ -10,21 +10,26 @@ const App = () => {
       
           <Route path="/registrationpage" element={<Registration />} />
           <Route path="/approvalform" element={<ApprovalForm />} />
-
+          <Route path="/requestform" element={<RequestForm />} />
         
           <Route path="/home" element={<Home />} /> 
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/create-campaign" element={<CreateCampaign />} />
+          <Route path="/home/profile" element={<Profile />} />
+          <Route path="/home/create-campaign" element={<CreateCampaign />} />
+          <Route path="/home/blogforall" element={<BlogForAll />} />
           <Route path="/campaign-details/:id" element={<CampaignDetails />} />
           <Route path="/campaign-update/:id" element={<UpdateCampaign />} />
 
           <Route path="/admindashboard" element={<AdminDashboard/>}/>
-          <Route path="/users" element={<Users/>}/>
-          <Route path="/organisations" element={<Organisations/>}/>
+          <Route path="/admindashboard/users" element={<Users/>}/>
+          <Route path="/admindashboard/organisations" element={<Organisations/>}/>
+          <Route path="/admindashboard/user-requests" element={<UserRequests/>}/>
+          
           <Route path="/userhome" element={<UserHome/>} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/helpcentre" element={<HelpCentre />} />
+          <Route path="/userhome/campaign-details-users/:id" element={<CampaignDetailsforUsers/>} />
+          <Route path="/userhome/blog" element={<Blog />} />
+          <Route path="/userhome/userprofile" element={<UserProfile />} />
+          <Route path="/userhome/helpcentre" element={<HelpCentre />} />
+          
         </Routes>
   )
 }
