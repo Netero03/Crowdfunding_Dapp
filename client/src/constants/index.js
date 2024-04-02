@@ -10,33 +10,40 @@ export const navlinks = [
   {
     name: 'Start campaign',
     imgUrl: createCampaign,
-    link: '/create-campaign',
+    link: '/home/create-campaign',
     id: 1
   },
   {
     name: 'Edit campaign',
     imgUrl: payment,
-    link: '/profile',
+    link: '/home/profile',
     id: 2
   },
   {
     name: 'Withdraw',
     imgUrl: withdraw,
-    link: '/profile',
+    link: '/home/profile',
     id: 3
   },
   {
     name: 'Profile',
     imgUrl: profile,
-    link: '/profile',
+    link: '/home/profile',
     id: 4
+  },
+  {
+    name: 'Blog',
+    imgUrl: createCampaign,
+    link: '/home/blogforall',
+    disabled: false,
+    id: 5
   },
   {
     name: 'Logout',
     imgUrl: logout,
     link: '/',
     disabled: false,
-    id: 5
+    id: 6
   },
 ];
 
@@ -50,21 +57,27 @@ export const adminNavlinks=[
   {
     name: 'Approve Users',
     imgUrl: profile,
-    link: '/users',
+    link: '/admindashboard/users',
     id: 1
   },
   {
     name: 'Organisations',
     imgUrl: profile,
-    link: '/organisations',
+    link: '/admindashboard/organisations',
     id: 2
+  },
+  {
+    name: 'UserRequests',
+    imgUrl: profile,
+    link: '/admindashboard/user-requests',
+    id: 3
   },
   {
     name: 'Logout',
     imgUrl: logout,
     link: '/',
     disabled: false,
-    id: 3
+    id: 4
   }
 ];
 
@@ -78,21 +91,21 @@ export const userNavlinks=[
   {
     name: 'Profile',
     imgUrl: profile,
-    link: '/userprofile',
+    link: '/userhome/userprofile',
     disabled: false,
     id: 1
   },
   {
     name: 'Blog',
     imgUrl: createCampaign,
-    link: '/blog',
+    link: '/userhome/blog',
     disabled: false,
     id: 2
   },
   {
     name: 'Help Center',
     imgUrl: payment,
-    link: '/helpcentre',
+    link: '/userhome/helpcentre',
     disabled: false,
     id: 3
   },

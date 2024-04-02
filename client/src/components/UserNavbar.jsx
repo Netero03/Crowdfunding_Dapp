@@ -45,7 +45,7 @@ const UserNavbar = () => {
             >
           </ConnectWallet>
 
-        <Link to="/profile">
+        <Link to="/userprofile">
           <div className="w-[52px] h-[52px] rounded-full bg-[#9AD0C2] flex justify-center items-center cursor-pointer transition duration-300 ease-in-out hover:shadow-md hover:shadow-[#2D9596]/80" >
             <img src={profile} alt="user" className="w-[60%] h-[60%] object-contain" />
           </div>
