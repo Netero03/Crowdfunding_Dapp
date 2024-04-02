@@ -79,7 +79,7 @@ const OrgRegistration = () => {
         email: formData.email,
         password: formData.password
       }, {
-        redirectTo: 'http://localhost:5173/approvalform'
+        redirectUrl: 'https://crowdfunding-dapp-drab.vercel.app/approvalform'
       });
 
       if (error) {
