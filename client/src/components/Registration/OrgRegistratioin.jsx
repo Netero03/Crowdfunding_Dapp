@@ -14,6 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import auth1 from "../../assets/people-fundraising-org.svg";
 import logo from "../../assets/logo.svg";
+import { supabase } from "../../lib/helper/SupabaseClient";
 
 
 const OrgRegistration = () => {
@@ -71,43 +72,73 @@ const OrgRegistration = () => {
     }));
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
-        ...formData,
-        userType: "ORG",
-      })
-      .then((res) => {
-        if (res.data.signup) {
-          setShowSuccessSnack(true);
-          setSnackMsg("Signup successful");
-          setTimeout(() => {
-            document.querySelector(".toggle2").click();
-          }, 2000);
-        } else console.log(res.data.error);
-      })
-      .catch((err) => console.log(err));
+    try {
+      let { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password
+      }, {
+        redirectTo: 'http://localhost:5173/approvalform'
+      });
+
+      if (error) {
+        console.log(error);
+        setShowSuccessSnack(true);
+        setSnackMsg("SignUp Failed " + error.message);
+      } else {
+
+        setShowSuccessSnack(true);
+        setSnackMsg("Signup successful , Check Your Email");
+        console.log(data);
+        // setTimeout(()=>{
+        // navigate('/approvalform')
+        // },2000)
+      }
+
+    } catch (e) { console.log(e); }
+    // axios
+    //   .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
+    //     ...formData,
+    //     userType: "ORG",
+    //   })
+    //   .then((res) => {
+    //     if (res.data.signup) {
+    //       setShowSuccessSnack(true);
+    //       setSnackMsg("Signup successful");
+    //       setTimeout(() => {
+    //         document.querySelector(".toggle2").click();
+    //       }, 2000);
+    //     } else console.log(res.data.error);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
-  const handleSignInSubmit = (e) => {
+  const handleSignInSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("https://crowdfunding-dapp-drab.vercel.app/registrationpage", {
-        ...loginformData,
-        userType: "ORG",
-      })
-      .then((res) => {
-        if (res.data.login) {
-          setShowSuccessSnack(true);
-          setSnackMsg("Signin successful");
-          setTimeout(() => {
-            navigate("/dashboard")
-          }, 2000);
-        } else console.log(res.data.error);
-      })
-      .catch((err) => console.log(err));
-  };
+    try {
+      let { data, error } = await supabase.auth.signInWithPassword({
+        email: loginformData.email,
+        password: loginformData.password
+      });
+
+      if (error) {
+        console.log(error);
+        setShowSuccessSnack(true);
+        setSnackMsg("Signin Failed " + error.message); // Use error.message instead of just error
+      } else {
+        setShowSuccessSnack(true);
+        setSnackMsg("Signin successful");
+        setTimeout(() => {
+          navigate("/home")
+        }, 2000);
+        console.log(data);
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleOtp = (e) => {
     setOTPInputs(Number(e.target.value));
@@ -256,19 +287,7 @@ const OrgRegistration = () => {
                     </div>
 
                     <div className="actual-form">
-                      <div className="input-wrap">
-                        <input
-                          placeholder="Full Name"
-                          onChange={handleChange}
-                          type="text"
-                          name="name"
-                          minLength="4"
-                          className="input-field"
-                          autoComplete="off"
-                          required
-                        />
-                        {/* <label>Name</label> */}
-                      </div>
+
 
                       <div className="input-wrap">
                         <input
@@ -296,67 +315,7 @@ const OrgRegistration = () => {
                         />
                         {/* <label>Mobile No</label> */}
                       </div>
-                      <div>
-                        {/* Org Radio Button */}
-                        <div className="radio-btns">
-                          <input
-                            onChange={handleRadioChange}
-                            type="radio"
-                            name="organization"
-                            value="org"
-                            className="input-field"
-                            style={{
-                              width: "20px",
-                              height: "15px",
-                            }}
-                            required
-                          />
-                          <label style={{ marginLeft: "30px" }}>
-                            Profit Org
-                          </label>
-                        </div>
 
-                        {/* NGO Radio Button */}
-                        <div className="radio-btns">
-                          <input
-                            onChange={handleRadioChange}
-                            type="radio"
-                            name="organization"
-                            value="ngo"
-                            className="input-field"
-                            style={{ width: "20px", height: "15px" }}
-                            required
-                          />
-                          <label style={{ marginLeft: "30px", height: "15px" }}>
-                            Non Profit Org
-                          </label>
-                        </div>
-
-                        {selectedOption === "org" && (
-                          <div className="input-wrap">
-                            <input
-                              placeholder="GSTIN"
-                              type="text"
-                              className="input-field"
-                              autoComplete="off"
-                              required
-                              name="gstin"
-                            />
-                          </div>
-                        )}
-                        {selectedOption === "ngo" && (
-                          <div className="input-wrap">
-                            <input
-                              placeholder="NGO Number"
-                              type="text"
-                              className="input-field"
-                              autoComplete="off"
-                              required
-                              name="ngoNumber"
-                            />
-                          </div>
-                        )}
-                      </div>
 
                       {!showSuccessSnack && !showErrorSnack ? (
                         <>

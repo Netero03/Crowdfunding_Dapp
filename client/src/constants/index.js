@@ -50,15 +50,21 @@ export const adminNavlinks=[
   {
     name: 'Approve Users',
     imgUrl: profile,
-    link: '/adminapproval',
+    link: '/users',
     id: 1
+  },
+  {
+    name: 'Organisations',
+    imgUrl: profile,
+    link: '/organisations',
+    id: 2
   },
   {
     name: 'Logout',
     imgUrl: logout,
     link: '/',
     disabled: false,
-    id: 2
+    id: 3
   }
 ];
 
