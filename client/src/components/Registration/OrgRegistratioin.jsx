@@ -78,8 +78,6 @@ const OrgRegistration = () => {
       let { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password
-      }, {
-        redirectTo: 'https://crowdfunding-dapp-drab.vercel.app/approvalform'
       });
 
       if (error) {
@@ -89,11 +87,11 @@ const OrgRegistration = () => {
       } else {
 
         setShowSuccessSnack(true);
-        setSnackMsg("Signup successful , Check Your Email");
+        setSnackMsg("Signup successful , Check Your Email to confirm Verification");
         console.log(data);
-        // setTimeout(()=>{
-        // navigate('/approvalform')
-        // },2000)
+        setTimeout(()=>{
+        navigate('/approvalform')
+        },2000)
       }
 
     } catch (e) { console.log(e); }
@@ -121,6 +119,12 @@ const OrgRegistration = () => {
         email: loginformData.email,
         password: loginformData.password
       });
+     
+    //   let { data: Organizations, error1 } = await supabase
+    //  .from('Organizations')
+    //  .select('status')
+
+    //  if(Organizations.status==='Pending')
 
       if (error) {
         console.log(error);
