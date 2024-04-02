@@ -17,14 +17,12 @@ export const navlinks = [
     name: 'Edit campaign',
     imgUrl: payment,
     link: '/profile',
-    disabled: false,
     id: 2
   },
   {
     name: 'Withdraw',
     imgUrl: withdraw,
     link: '/profile',
-    disabled: false,
     id: 3
   },
   {
@@ -50,9 +48,53 @@ export const adminNavlinks=[
     id: 0
   },
   {
-    name: 'Users',
+    name: 'Approve Users',
     imgUrl: profile,
     link: '/adminapproval',
     id: 1
+  },
+  {
+    name: 'Logout',
+    imgUrl: logout,
+    link: '/',
+    disabled: false,
+    id: 2
   }
 ];
+
+export const userNavlinks=[
+  {
+    name: 'Home',
+    imgUrl: dashboard,
+    link: '/userhome',
+    id: 0
+  },
+  {
+    name: 'Profile',
+    imgUrl: profile,
+    link: '/userprofile',
+    disabled: false,
+    id: 1
+  },
+  {
+    name: 'Blog',
+    imgUrl: createCampaign,
+    link: '/blog',
+    disabled: false,
+    id: 2
+  },
+  {
+    name: 'Help Center',
+    imgUrl: payment,
+    link: '/helpcentre',
+    disabled: false,
+    id: 3
+  },
+  {
+    name: 'Logout',
+    imgUrl: logout,
+    link: '/',
+    disabled: false,
+    id: 4
+  },
+]

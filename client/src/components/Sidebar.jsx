@@ -42,7 +42,7 @@ const Sidebar = () => {
                     {...link}
                     isActive={isActive}
                     name={link.name}
-                    styles={"relative flex flex-row items-center h-11 focus:outline-none transition duration-500 hover:bg-[#9AD0C2] text-white hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"}
+                    styles={`relative flex flex-row items-center h-11 focus:outline-none transition duration-300 ${isActive === link.name ? 'bg-[#9AD0C2] text-gray-800 border-l-4 border-indigo-500' : 'hover:bg-[#9AD0C2] text-white hover:text-gray-800 border-l-4 border-transparent'} pr-6`}
                     handleClick={() => {
                       if (!link.disabled) {
                         setIsActive(link.name);
