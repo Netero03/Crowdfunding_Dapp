@@ -9,25 +9,28 @@ const ApprovalPage = () => {
     const [email, setEmail] = useState('');
 
     const func = async () => {
-        const { data: { user } } = await supabase.auth.getUser()
-        console.log(user)
-        setEmail(user.email)
-        console.log(email)
+//         const { data: { user } } = await supabase.auth.getUser()
+//         console.log(user)
+//         setEmail(user.email)
+//         console.log(email)
 
-        let { data: ProjectRequest, error } = await supabase
-            .from('ProjectRequest')
-            .select("*")
-            .eq('email', email)
-        console.log(ProjectRequest)
-        const arr = ProjectRequest
-        console.log(arr[0].status)
+//         let { data: ProjectRequest, error } = await supabase
+//             .from('ProjectRequest')
+//             .select("*")
+//             .eq('email', email)
+//         console.log(ProjectRequest)
+//         const arr = ProjectRequest
+//         console.log(arr[0].status)
 
-        const status = arr[0].status
-   if (status === 'Approved'){
-navigate('/home')
-   }
+//         const status = arr[0].status
+//    if (status === 'Approved'){
+// navigate('/home')
+//    }
 
-        setIsApproved(true);
+//         setIsApproved(true);
+setTimeout(()=>{
+    navigate('/home')
+}, 20000)
     }
     func()
     useEffect(() => {

@@ -117,7 +117,7 @@ const OrgRegistration = () => {
       let { data: Organizations, error } = await supabase
         .from('Organizations')
         .select('*');
-  
+
       if (error) {
         console.log(error);
       } else {
@@ -125,15 +125,16 @@ const OrgRegistration = () => {
         let foundOrganization = false;
         Organizations.forEach(organization => {
           if (organization.email === loginformData.email) {
-            
+
             console.log(organization.status);// Log organization status
-            setStatus(organization.status); 
+            setStatus(organization.status);
             foundOrganization = true;
           }
         });
-  
+
         if (!foundOrganization) {
-          console.log("Organization not found");}
+          console.log("Organization not found");
+        }
       }
     } catch (err) {
       console.log(err);
@@ -147,7 +148,7 @@ const OrgRegistration = () => {
         email: loginformData.email,
         password: loginformData.password
       });
-  
+
       if (error) {
         console.log(error);
         setShowSuccessSnack(true);
@@ -166,12 +167,13 @@ const OrgRegistration = () => {
           }, 2000);
           console.log(data);
         }
-          
+
         else {
           console.log(status)
           setShowSuccessSnack(true);
           setSnackMsg("Organization Not Approved");
-      }}
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -305,8 +307,7 @@ const OrgRegistration = () => {
                     onSubmit={handleSignupSubmit}
                   >
                     <div className="logo">
-                      <img src={logo} alt="easyclass" />
-                      <Typography variant="h6">ChainRise</Typography>
+                      <a className="font-bold text-2xl text-[#265073]">ChainRise</a>
                     </div>
 
                     <div className="heading">

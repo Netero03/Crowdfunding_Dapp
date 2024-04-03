@@ -8,6 +8,7 @@ import { checkIfImage } from '../utils';
 import { useNavigate } from 'react-router-dom';
 // import 'react-responsive-modal/styles.css';
 // import { Modal } from 'react-responsive-modal';
+import Layout from '../components/Layout';
 
 const UpdateCampaign = () => {
   const navigate = useNavigate();

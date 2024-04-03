@@ -78,10 +78,16 @@ const UserRegistration = () => {
       });
 
       if (error) {
-        console.log(error.message);
+        console.log(error.message)
+        console.log(formData.email)
+        console.log(formData.password);
       } else {
         setShowSuccessSnack(true);
         setSnackMsg("Signup successful! Check Your Email");
+        setTimeout(()=>{
+          navigate('/userhome'), 2000
+        })
+        
 
 
         // save user data in Users table
@@ -267,8 +273,7 @@ const UserRegistration = () => {
                     onSubmit={handleSignupSubmit}
                   >
                     <div className="logo">
-                      <img src={logo} alt="easyclass" />
-                      <Typography variant="h6">Chain Rise</Typography>
+                      <a className="font-bold text-2xl text-[#265073]">ChainRise</a>
                     </div>
 
                     <div className="heading">

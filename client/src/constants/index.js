@@ -98,7 +98,7 @@ export const userNavlinks=[
   {
     name: 'Ask For Approval',
     imgUrl: payment,
-    link: '/askforapproval',
+    link: '/requestform',
     disabled: false,
     id: 2
   },

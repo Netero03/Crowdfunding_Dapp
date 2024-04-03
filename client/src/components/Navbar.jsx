@@ -61,7 +61,7 @@ const Navbar = () => {
             btnType="button"
             title="Create a campaign"
             styles="bg-[#265073] "
-            handleClick={() => navigate('/create-campaign')}
+            handleClick={() => navigate('/home/create-campaign')}
           />
 
         <Link to="/profile">
@@ -115,7 +115,7 @@ const Navbar = () => {
               title={address ? 'Create aaa campaign' : 'Connect'}
               styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
               handleClick={() => {
-                if (address) navigate('create-campaign')
+                if (address) navigate('home/create-campaign')
                 else connect();
               }}
             />
