@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Sidebar, Navbar, CustomButton } from '../components';
-import { DisplayCampaigns } from '../components';
-import { useStateContext } from '../context';
 
 import UserLayout from '../components/UserLayout';
 
-const AskforApproval = () => {
+const AskApproval = () => {
 
     return (
         <>
@@ -39,4 +37,4 @@ const AskforApproval = () => {
     )
 }
 
-export default AskforApproval
+export default AskApproval
