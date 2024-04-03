@@ -28,10 +28,7 @@ const AskforApproval = () => {
                                 btnType="button"
                                 title={'Request for Approval'}
                                 styles={'bg-[#1dc071]'}
-                                handleClick={
-                                    navigate('requestform')
-
-                                }
+                                handleClick={navigate('requestform')}
                             />
                         </div>
                     </div>
