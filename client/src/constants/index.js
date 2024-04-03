@@ -96,24 +96,31 @@ export const userNavlinks=[
     id: 1
   },
   {
+    name: 'Ask For Approval',
+    imgUrl: payment,
+    link: '/askforapproval',
+    disabled: false,
+    id: 2
+  },
+  {
     name: 'Blog',
     imgUrl: createCampaign,
     link: '/userhome/blog',
     disabled: false,
-    id: 2
+    id: 3
   },
   {
     name: 'Help Center',
     imgUrl: payment,
     link: '/userhome/helpcentre',
     disabled: false,
-    id: 3
+    id: 4
   },
   {
     name: 'Logout',
     imgUrl: logout,
     link: '/',
     disabled: false,
-    id: 4
+    id: 5
   },
 ]

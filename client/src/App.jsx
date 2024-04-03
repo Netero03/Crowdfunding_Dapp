@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { CampaignDetails, CreateCampaign, UpdateCampaign, Home, Profile, LandingPage, Registration, AdminDashboard, Users , ApprovalForm, Organisations, UserHome, Blog, UserProfile, HelpCentre, CampaignDetailsforUsers, RequestForm, BlogForAll, UserRequests, Confirm, ApprovalPage } from './pages';
+import { CampaignDetails, CreateCampaign, UpdateCampaign, Home, Profile, LandingPage, Registration, AdminDashboard, Users , ApprovalForm, Organisations, UserHome, Blog, UserProfile, HelpCentre, CampaignDetailsforUsers, RequestForm, BlogForAll, UserRequests, Confirm, ApprovalPage, AskforApproval } from './pages';
 
 const App = () => {
   return (
@@ -33,6 +33,7 @@ const App = () => {
           <Route path="/userhome/blog" element={<Blog />} />
           <Route path="/userhome/userprofile" element={<UserProfile />} />
           <Route path="/userhome/helpcentre" element={<HelpCentre />} />
+          <Route path="/askforapproval" element={<AskforApproval />} />
           
         </Routes>
   )
