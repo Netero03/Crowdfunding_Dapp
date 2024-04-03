@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react'
 import { DisplayCampaigns } from '../components';
 import { useStateContext } from '../context'
 import UserLayout from '../components/UserLayout';
+import { supabase } from '../lib/helper/SupabaseClient';
 
 const UserProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
+
 
   const { address, contract, getUserCampaigns } = useStateContext();
 
@@ -17,7 +19,12 @@ const UserProfile = () => {
     setIsLoading(false);
   }
 
-  useEffect(() => {
+
+
+  useEffect( () => {
+
+   
+
     if (contract) fetchCampaigns();
   }, [address, contract]);
 

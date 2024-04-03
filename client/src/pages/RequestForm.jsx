@@ -57,15 +57,15 @@ const RequestForm = () => {
     e.preventDefault()
     try {
       const { data, error } = await supabase
-        .from(' Organizations ')
+        .from('ProjectRequest')
         .insert([
           {
             name: formData.name,
             email: formData.email,
-            project_detail: formData.project_detail,
-            project_mission: formData.ngoNumber,
-            proof_link: formData.link,
-            status: status
+            projectDetails: formData.project_detail,
+            mission: formData.project_mission,
+            link: formData.proof_link,
+            status: 'Pending'
           },
         ])
         .select()
@@ -81,7 +81,7 @@ const RequestForm = () => {
         setSnackMsg(" Wait For Admin Approval");
         console.log(data)
         setTimeout(() => {
-          navigate('/')
+          navigate('/approvalpage')
         }, 2000)
 
 

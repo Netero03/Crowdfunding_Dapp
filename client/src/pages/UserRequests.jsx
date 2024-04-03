@@ -14,123 +14,129 @@ import AdminLayout from '../components/AdminLayout';
 
 const UserReq = function UserReqTable() {
 
-    const [orgs, setOrg] = useState([]);
+    const [requests, setRequests] = useState([]);
     const [approval, setApproval] = useState('');
 
     const handleStatus = async (status, id, email) => {
+     
+        if(status === 'Pending'){
+        const { data, error } = await supabase
+            .from('ProjectRequest')
+            .update({ status: 'Approved' })
+            .eq('id', id)
+            .select()
+       
+        if (error) console.log(error.message);
+        else {
+            setRequests(prevreq => prevreq.map(request => request.id === id ? { ...request, status: 'Approved' } : request));
 
-        if (status === "Pending") {
-            const { data, error } = await supabase
-                .from('Organizations')
-                .update({ status: 'Approved' })
-                .eq('id', id)
-                .select()
-
-            if (error) console.log(error);
-            else {
-                setOrg(prevOrgs => prevOrgs.map(org => org.id === id ? { ...org, status: 'Approved' } : org));
-                
-                try{let { data, error } = await supabase.auth.admin.inviteUserByEmail(email);}
-                catch (error) {console.log(error);}
-            }
-
-
+            try {
+                let { data, error } = await supabase.auth.signInWithOtp({
+                  email: email
+                })
+                 }
+            catch (error1) { console.log(error); }
         }
+
 
     }
 
-    useEffect(() => {
+}
 
-        async function fetchOrgData() {
-            try {
-                let { data: Organizations, error } = await supabase
-                    .from('Organizations')
-                    .select('*')
+useEffect(() => {
 
-                if (error) console.log(error);
+    async function fetchRequests() {
+        try {
 
-                else {
-                    console.log(Organizations)
-                    setOrg(Organizations)
+            let { data: ProjectRequest, error } = await supabase
+                .from('ProjectRequest')
+                .select('*')
 
-                }
-            } catch (error) {
-                console.log(error)
+
+            if (error) console.log(error);
+
+            else {
+                console.log(ProjectRequest)
+                setRequests(ProjectRequest)
+
             }
+        } catch (error) {
+            console.log(error)
         }
+    }
 
-        // Call the fetchProductData function when the component mounts
-        fetchOrgData();
-        return () => {
-            // Any clean-up code if needed
-        };
-    }, []);
+    // Call the fetchProductData function when the component mounts
+    fetchRequests();
+    return () => {
+        // Any clean-up code if needed
+    };
+}, []);
 
-    return (
-        <>
-            <AdminLayout>
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead>
-                            <tr className="bg-gray-100 dark:bg-gray-700">
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project Detail</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Proof link</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project Mission</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+return (
+    <>
+        <AdminLayout>
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead>
+                        <tr className="bg-gray-100 dark:bg-gray-700">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project Detail</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Proof link</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project Mission</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
 
 
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {/* Table rows will be dynamically populated here */}
+                        {requests.map(request => (
+                            <tr key={request.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {request.id}{request.name}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {request.email}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {request.projectDetails}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {request.link}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {request.mission}
+                                </td>
+                                <td className="px-6 py-4 text-right text-gray-900">
+                                    <Box display={"flex"} gap={"30px"}>
+                                        <Button
+                                            onClick={() => handleStatus(request.status, request.id, request.email)}
+                                            value="Submit"
+                                            className="sign-btn"
+                                            style={{
+                                                background: '#265073',
+                                                color: 'white', // Text color is explicitly set to white
+                                                marginBottom: "10px",
+                                            }}
+                                            disabled={request.status === "Approved"}
+                                        >
+                                            {request.status}
+                                        </Button>
+                                    </Box>
+
+                                </td>
                             </tr>
-                        </thead>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
-                        <tbody>
-                            {/* Table rows will be dynamically populated here */}
-                            {orgs.map(org => (
-                                <tr key={org.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {org.name}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        {org.email}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        {org.project_details}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        {org.proof_link}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        {org.project_mission}
-                                    </td>
-                                    <td className="px-6 py-4 text-right text-gray-900">
-                                        <Box display={"flex"} gap={"30px"}>
-                                            <Button
-                                                onClick={() => handleStatus(org.status, org.id, org.email)}
-                                                value="Submit"
-                                                className="sign-btn"
-                                                style={{
-                                                    background:  '#265073',
-                                                    color: 'white', // Text color is explicitly set to white
-                                                    marginBottom: "10px",
-                                                }}
-                                                disabled={org.status === "Approved"}
-                                            >
-                                                {org.status}
-                                            </Button>
-                                        </Box>
+        </AdminLayout>
+    </>
 
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-
-            </AdminLayout>
-        </>
-
-    )
+)
 }
 
 export default UserReq

@@ -9,6 +9,7 @@ import {
     Snackbar,
     Typography,
 } from "@mui/material";
+import axios from 'axios';
 
 import AdminLayout from '../components/AdminLayout';
 
@@ -16,6 +17,10 @@ const Organisations = function organisationsTable() {
 
     const [orgs, setOrg] = useState([]);
     const [approval, setApproval] = useState('');
+
+    const [to, setTo] = useState('');
+  const [subject, setSubject] = useState('');
+  const [text, setText] = useState('');
 
     const handleStatus = async (status, id, email) => {
 
@@ -29,7 +34,7 @@ const Organisations = function organisationsTable() {
             if (error) console.log(error);
             else {
                 setOrg(prevOrgs => prevOrgs.map(org => org.id === id ? { ...org, status: 'Approved' } : org));
-                
+
                 try{let { data, error } = await supabase.auth.admin.inviteUserByEmail(email);}
                 catch (error) {console.log(error);}
             }

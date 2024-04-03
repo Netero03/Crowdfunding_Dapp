@@ -82,17 +82,17 @@ const UserRegistration = () => {
       } else {
         setShowSuccessSnack(true);
         setSnackMsg("Signup successful! Check Your Email");
-       
+
 
         // save user data in Users table
         const { data, error } = await supabase
           .from('Users')
           .insert([
-            { email: formData.email , Full_name: formData.name },
+            { email: formData.email, Full_name: formData.name },
           ])
           .select()
 
-          if(error){ console.log(error) }
+        if (error) { console.log(error) }
       }
 
     } catch (error) {
@@ -127,7 +127,7 @@ const UserRegistration = () => {
           }, 2000);
         } else {
           setTimeout(() => {
-            navigate('/home');
+            navigate('/userhome');
           }, 3000);
         }
       }

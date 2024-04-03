@@ -27,7 +27,7 @@ const OrgRegistration = () => {
   const [snackMsg, setSnackMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
-
+  const [status, setStatus] = useState('');
   const [getOTPInputs, setOTPInputs] = useState("");
 
   const [formData, setFormData] = useState({
@@ -89,9 +89,9 @@ const OrgRegistration = () => {
         setShowSuccessSnack(true);
         setSnackMsg("Signup successful , Check Your Email to confirm Verification");
         console.log(data);
-        setTimeout(()=>{
-        navigate('/approvalform')
-        },2000)
+        setTimeout(() => {
+          navigate('/approvalform')
+        }, 2000)
       }
 
     } catch (e) { console.log(e); }
@@ -112,6 +112,34 @@ const OrgRegistration = () => {
     //   .catch((err) => console.log(err));
   };
 
+  const checkStatus = async () => {
+    try {
+      let { data: Organizations, error } = await supabase
+        .from('Organizations')
+        .select('*');
+  
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(Organizations);
+        let foundOrganization = false;
+        Organizations.forEach(organization => {
+          if (organization.email === loginformData.email) {
+            
+            console.log(organization.status);// Log organization status
+            setStatus(organization.status); 
+            foundOrganization = true;
+          }
+        });
+  
+        if (!foundOrganization) {
+          console.log("Organization not found");}
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -119,31 +147,35 @@ const OrgRegistration = () => {
         email: loginformData.email,
         password: loginformData.password
       });
-     
-    //   let { data: Organizations, error1 } = await supabase
-    //  .from('Organizations')
-    //  .select('status')
-
-    //  if(Organizations.status==='Pending')
-
+  
       if (error) {
         console.log(error);
         setShowSuccessSnack(true);
         setSnackMsg("Signin Failed " + error.message); // Use error.message instead of just error
       } else {
-        setShowSuccessSnack(true);
-        setSnackMsg("Signin successful");
-        setTimeout(() => {
-          navigate("/home")
-        }, 2000);
-        console.log(data);
-      }
-    }
-    catch (error) {
+        await checkStatus();
+
+        console.log(status)
+        // Assuming status is a state variable
+        if (status == 'Approved') {
+          console.log(status)
+          setShowSuccessSnack(true);
+          setSnackMsg("Signin successful");
+          setTimeout(() => {
+            navigate("/home");
+          }, 2000);
+          console.log(data);
+        }
+          
+        else {
+          console.log(status)
+          setShowSuccessSnack(true);
+          setSnackMsg("Organization Not Approved");
+      }}
+    } catch (error) {
       console.log(error);
     }
   }
-
   const handleOtp = (e) => {
     setOTPInputs(Number(e.target.value));
   };

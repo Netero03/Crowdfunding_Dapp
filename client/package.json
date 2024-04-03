@@ -20,6 +20,7 @@
     "@supabase/supabase-js": "^2.39.7",
     "@thirdweb-dev/react": "^4",
     "@thirdweb-dev/sdk": "^4",
+    "axios": "^1.6.8",
     "ethers": "^5",
     "feather-icons": "^4.29.1",
     "framer-motion": "^11.0.6",
